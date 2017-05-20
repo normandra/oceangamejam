@@ -23,7 +23,7 @@ public class AssetLoader {
 
     public Texture mainMenuBackground;
 
-    public Texture trail, net;
+    public Texture trail, netLeftRight, netUpDown, netRightDownLeftUp, netRightUpLeftDown;
 
     private Texture sardineTexture;
     public Animation<TextureRegion> sardines;
@@ -60,7 +60,11 @@ public class AssetLoader {
         exitButtonInactive = new Texture("menuUi/ExitNormal.png");
         
         trail = new Texture("Trail01.png");
-        net = new Texture("Net.png");
+        netLeftRight = new Texture("net-left-right.png");
+        netUpDown = new Texture("net-up-down.png");
+        
+        netRightDownLeftUp = new Texture("net-rightdown-leftup.png");
+        netRightUpLeftDown = new Texture("net-rightup-leftdown.png");
 
         mainMenuBackground = new Texture("menuUi/Map01.png");
 
@@ -83,7 +87,12 @@ public class AssetLoader {
         exitButtonInactive.dispose();
         
         trail.dispose();
-        net.dispose();
+        
+        netLeftRight.dispose();
+        netUpDown.dispose();
+        netRightDownLeftUp.dispose();
+        netRightUpLeftDown.dispose();
+        
         mainMenuBackground.dispose();
 
     }

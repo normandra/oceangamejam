@@ -119,10 +119,28 @@ public class Ship extends Objects {
         	fishOver.batch.draw(fishOver.as.trail,i[0],i[1]);
         }
         Integer[] i = {getX(),getY()};
-        if (trail.trail.size()>0)
+        Integer[] j = i;
+        if (trail.trail.size()>0) {
         	i = trail.trail.get(0);
-
-        fishOver.batch.draw(fishOver.as.net, i[0], i[1]);
+        	
+        	if (trail.trail.size()>1) {
+            	j = trail.trail.get(1);
+            	
+            	int diffX = j[0] - i[0];
+                int diffY = j[1] - i[1];
+                
+                if (diffX != 0) { // left and right
+                	if (diffY < 0) {
+                		fishOver.batch.draw(fishOver.as.netRightUpLeftDown, i[0], i[1]);
+                	} else fishOver.batch.draw(fishOver.as.netLeftRight, i[0], i[1]);
+                } else if (diffY != 0) { // up and down
+                	if (diffX < 0) {
+                		fishOver.batch.draw(fishOver.as.netRightDownLeftUp, i[0], i[1]);
+                	} else fishOver.batch.draw(fishOver.as.netUpDown, i[0], i[1]); 
+                }
+            } else fishOver.batch.draw(fishOver.as.netLeftRight, i[0], i[1]);
+        }
+        
         fishOver.batch.draw(getCurrent(), getX(), getY());
         
     }
