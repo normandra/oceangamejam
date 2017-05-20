@@ -1,5 +1,7 @@
 package com.oceangamejam.game.gameobjects;
 
+import java.util.ArrayList;
+
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 import com.oceangamejam.game.FishOver;
@@ -12,7 +14,7 @@ public class Ship extends Objects {
 
 
 	boolean leftMove, rightMove, upMove, downMove;
-	static double threshhold = 15;
+	static double threshhold = 6;
 	double xVelocity, yVelocity;
     private FishOver fishOver;
 	
@@ -24,36 +26,48 @@ public class Ship extends Objects {
 	}
 	
 	void updateVelocity(){
+		float deltaTime = Gdx.graphics.getDeltaTime();
+		if (leftMove && Math.abs(xVelocity) < threshhold) {
+			if (xVelocity>0) xVelocity -= 4 * deltaTime;
+
+			xVelocity -= 3 * deltaTime;
+		}
 		
-		if (leftMove && Math.abs(xVelocity) < threshhold)
-		{
-		    xVelocity -= 5 * Gdx.graphics.getDeltaTime();
+		if (rightMove && Math.abs(xVelocity) < threshhold) { 
+			if (xVelocity<0) xVelocity += 4 * deltaTime;
+
+			xVelocity += 3 * deltaTime;
 		}
-		if (rightMove && Math.abs(xVelocity) < threshhold)
-		{
-		    xVelocity += 5 * Gdx.graphics.getDeltaTime(); 
-		}
-		if (!rightMove && !leftMove && Math.abs(xVelocity) > 0){
-			if (xVelocity<0.5)
-				xVelocity += 6 * Gdx.graphics.getDeltaTime();
-			else if (xVelocity>0.5)
-				xVelocity -= 6 * Gdx.graphics.getDeltaTime();
+		
+		if (!rightMove && !leftMove && Math.abs(xVelocity) > 0) {
+			
+			if (xVelocity < 0.5)
+				xVelocity += 5 * deltaTime;
+			
+			else if (xVelocity > 0.5)
+				xVelocity -= 5 * deltaTime;
+			
 			else xVelocity = 0;
 		}
 			
-		if (downMove && Math.abs(yVelocity) < threshhold)
-		{
-		    yVelocity -= 5 * Gdx.graphics.getDeltaTime();
+		if (downMove && Math.abs(yVelocity) < threshhold) {
+			if(yVelocity>0) yVelocity -= 4 * deltaTime;
+			yVelocity -= 3 * deltaTime;
 		}
-		if (upMove && Math.abs(yVelocity) < threshhold)
-		{
-		    yVelocity += 5 * Gdx.graphics.getDeltaTime(); 
+		
+		if (upMove && Math.abs(yVelocity) < threshhold) {
+			if(yVelocity<0) yVelocity += 4 * deltaTime;
+			yVelocity += 3 * deltaTime;
 		}
-		if (!upMove && !downMove && Math.abs(yVelocity) > 0){
-			if (yVelocity<0.5)
-				yVelocity += 6 * Gdx.graphics.getDeltaTime();
-			else if (yVelocity>0.5)
-				yVelocity -= 6 * Gdx.graphics.getDeltaTime();
+		
+		if (!upMove && !downMove && Math.abs(yVelocity) > 0) {
+			
+			if (yVelocity < 0.5) 
+				yVelocity += 5 * deltaTime;
+			
+			else if (yVelocity>0.5) 
+				yVelocity -= 5 * deltaTime;
+			
 			else yVelocity = 0;
 		}
 		 
