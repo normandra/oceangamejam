@@ -16,7 +16,7 @@ public class AssetLoader {
     // Assets
 
     public Texture img;
-    public Texture left, duleft, up, ruright,right,ddright,down,ddleft;
+    public Texture left, duleft, up, duright,right,ddright,down,ddleft;
 
     public AssetLoader(){
         assets = new AssetManager();
@@ -29,7 +29,7 @@ public class AssetLoader {
         up = new Texture("BoatySprites/nord.png");
 
         duleft = new Texture("BoatySprites/nord-west.png");
-        ruright = new Texture("BoatySprites/nord-ost.png");
+        duright = new Texture("BoatySprites/nord-ost.png");
         ddright = new Texture("BoatySprites/south-east.png");
         ddleft = new Texture("BoatySprites/south-west.png");
     }
