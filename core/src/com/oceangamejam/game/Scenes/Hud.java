@@ -29,6 +29,8 @@ public class Hud {
     private Integer worldTimer;
     private float timeCount;
     private Integer score;
+
+    private BitmapFont font;
     
     Label countdownLabel;
     Label scoreLabel;
@@ -42,23 +44,27 @@ public class Hud {
         timeCount = 0;
         score = 0;
         
-        viewPort = new FitViewport(Gdx.graphics.getWidth(), Gdx.graphics.getHeight(), ocam);
+        viewPort = new FitViewport(Gdx.graphics.getWidth(), Gdx.graphics.getHeight(), new OrthographicCamera());
         stage = new Stage(viewPort, sb);
         
         Table table = new Table();
         table.top();
         table.setFillParent(true);
+
+        font = new BitmapFont();
+        font.getData().setScale(2.5f,2.5f);
         
-        countdownLabel = new Label(String.format("%03d", worldTimer), new Label.LabelStyle(new BitmapFont(), Color.WHITE));
-        scoreLabel = new Label(String.format("%03d", score), new Label.LabelStyle(new BitmapFont(), Color.WHITE));
-        timeLabel = new Label("TIME", new Label.LabelStyle(new BitmapFont(), Color.WHITE));       
-        fishLabel = new Label("FISHES", new Label.LabelStyle(new BitmapFont(), Color.WHITE));
+        countdownLabel = new Label(String.format("%03d", worldTimer), new Label.LabelStyle(font, Color.WHITE));
+        scoreLabel = new Label(String.format("%03d", score), new Label.LabelStyle(font, Color.WHITE));
+        timeLabel = new Label("TIME", new Label.LabelStyle(font, Color.WHITE));
+        fishLabel = new Label("FISHES", new Label.LabelStyle(font, Color.WHITE));
         
         table.add(fishLabel).expandX().padTop(10);
         table.add(timeLabel).expandX().padTop(10);
         table.row();
         table.add(scoreLabel).expandX();
-        table.add(countdownLabel).expand();
+        table.add(countdownLabel).expandX();
+
         
         stage.addActor(table);
     }   

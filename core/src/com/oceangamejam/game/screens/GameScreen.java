@@ -78,7 +78,8 @@ public class GameScreen implements Screen {
         ocam.position.set(player.getX(),player.getY(),0);
         ocam.update();
 
-
+        //update hud
+        hud.update(delta);
 
 
 
