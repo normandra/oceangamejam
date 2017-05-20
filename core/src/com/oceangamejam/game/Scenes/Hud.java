@@ -68,12 +68,13 @@ public class Hud {
         
         stage.addActor(table);
     }   
-        public void update(float dt){
+        public Integer update(float dt){
         timeCount += dt;
         if(timeCount >= 1 ){
             worldTimer--;
             countdownLabel.setText(String.format("%02d:%02d", worldTimer / 60, worldTimer % 60));
             timeCount = 0;
         }
+        return worldTimer;
     }
 }
