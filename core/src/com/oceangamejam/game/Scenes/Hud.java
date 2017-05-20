@@ -28,7 +28,7 @@ public class Hud {
     
     private Integer worldTimer;
     private float timeCount;
-    private Integer score;
+    public Integer score;
 
     private BitmapFont font;
     
@@ -73,6 +73,8 @@ public class Hud {
         if(timeCount >= 1 ){
             worldTimer--;
             countdownLabel.setText(String.format("%02d:%02d", worldTimer / 60, worldTimer % 60));
+            countdownLabel.setText(String.format("%03d", worldTimer));
+            scoreLabel.setText(String.format("%03d", score));
             timeCount = 0;
         }
         return worldTimer;

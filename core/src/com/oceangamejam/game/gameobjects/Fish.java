@@ -13,7 +13,7 @@ public class Fish extends Objects {
     protected FishOver fishOver;
     protected TextureRegion curFrame;
     protected float stateTime;
-    protected Circle fishBound;
+    public Circle fishBound;
 
     public Fish(int x, int y, FishOver fo) {
         super(x, y);
@@ -32,5 +32,9 @@ public class Fish extends Objects {
     @Override
     public void render() {
         fishBound.setPosition(x+20,y+10);
+    }
+
+    public boolean checkCollision(Circle net){
+        return net.overlaps(fishBound);
     }
 }

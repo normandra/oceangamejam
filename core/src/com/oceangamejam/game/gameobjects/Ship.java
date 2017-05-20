@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.math.Circle;
 import com.oceangamejam.game.FishOver;
 
 /**
@@ -19,7 +20,8 @@ public class Ship extends Objects {
     private FishOver fishOver;
     private ShipTrail trail;
     private float time;
-	
+	public Circle net;
+
 	void updateMotion(){
 		updateVelocity();
 		x += xVelocity;
@@ -29,18 +31,30 @@ public class Ship extends Objects {
 	
 	void updateVelocity(){
 		float deltaTime = Gdx.graphics.getDeltaTime();
-		if (leftMove && Math.abs(xVelocity) < threshhold) {
-			if (xVelocity>0) xVelocity -= 4 * deltaTime;
+		if (Math.abs(xVelocity) < threshhold) {
+            if (leftMove) {
+                if (xVelocity > 0) {
+                    xVelocity -= 4 * deltaTime;
+                }
 
-			xVelocity -= 3 * deltaTime;
-		}
-		
-		if (rightMove && Math.abs(xVelocity) < threshhold) { 
-			if (xVelocity<0) xVelocity += 4 * deltaTime;
+                xVelocity -= 3 * deltaTime;
+            }
 
-			xVelocity += 3 * deltaTime;
-		}
-		
+            if (rightMove) {
+                if (xVelocity < 0) {
+                    xVelocity += 4 * deltaTime;
+                }
+
+                xVelocity += 3 * deltaTime;
+            }
+        }else if (Math.abs(xVelocity)>threshhold) {
+            if (xVelocity > 0) {
+                xVelocity = threshhold - 1;
+            } else {
+                xVelocity = -threshhold + 1;
+            }
+        }
+
 		if (!rightMove && !leftMove && Math.abs(xVelocity) > 0) {
 			
 			if (xVelocity < 0.5)
@@ -52,14 +66,27 @@ public class Ship extends Objects {
 			else xVelocity = 0;
 		}
 			
-		if (downMove && Math.abs(yVelocity) < threshhold) {
-			if(yVelocity>0) yVelocity -= 4 * deltaTime;
-			yVelocity -= 3 * deltaTime;
-		}
+
 		
-		if (upMove && Math.abs(yVelocity) < threshhold) {
-			if(yVelocity<0) yVelocity += 4 * deltaTime;
-			yVelocity += 3 * deltaTime;
+		if ( Math.abs(yVelocity) < threshhold) {
+			if (upMove) {
+				if (yVelocity < 0) {
+					yVelocity += 4 * deltaTime;
+				}
+				yVelocity += 3 * deltaTime;
+			}
+			if (downMove) {
+				if(yVelocity>0){
+					yVelocity -= 4 * deltaTime;
+				}
+				yVelocity -= 3 * deltaTime;
+			}
+		}else if (Math.abs(yVelocity)>threshhold){
+			if (yVelocity>0){
+				yVelocity = threshhold-1;
+			}else{
+				yVelocity = -threshhold+1;
+			}
 		}
 		
 		if (!upMove && !downMove && Math.abs(yVelocity) > 0) {
@@ -101,6 +128,7 @@ public class Ship extends Objects {
         this.current = current;
         this.fishOver = fishOver;
         trail = new ShipTrail();
+		net = new Circle(x-5,y,30);
     }
 
     @Override
@@ -108,7 +136,7 @@ public class Ship extends Objects {
     	updateMotion();
     	updateShipAssets();
         time += Gdx.graphics.getDeltaTime();
-        if (xVelocity!=0 && yVelocity != 0){
+        if (xVelocity!=0 || yVelocity != 0){
 //        	if(time > 0.1f){
 //        		time = 0;
         		trail.addNewPoint(getX(), getY());
@@ -118,13 +146,14 @@ public class Ship extends Objects {
         for (Integer[] i : trail.trail){
         	fishOver.batch.draw(fishOver.as.trail,i[0],i[1]);
         }
+
         Integer[] i = {getX(),getY()};
         if (trail.trail.size()>0)
         	i = trail.trail.get(0);
 
         fishOver.batch.draw(fishOver.as.net, i[0] - 5, i[1],20,20);
         fishOver.batch.draw(getCurrent(), getX(), getY());
-        
+        net.setPosition(i[0],i[1]);
     }
 
 
