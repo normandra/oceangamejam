@@ -37,7 +37,8 @@ public class GameScreen implements Screen {
     private Camera ocam;
     
     private Hud hud;
-
+    
+    private Integer over;
 
 
     public GameScreen(FishOver fishOver) {
@@ -79,7 +80,7 @@ public class GameScreen implements Screen {
         ocam.update();
 
         //update hud
-        hud.update(delta);
+        over = hud.update(delta);
 
 
 
@@ -98,8 +99,21 @@ public class GameScreen implements Screen {
  
 
         fishOver.batch.end();
-               hud.stage.draw();
+        hud.stage.draw();
+        
+        if(gameOver(over)){
+            fishOver.setScreen(new GameOverScreen(fishOver));
+            dispose();
+        }
 
+    }
+    
+    public boolean gameOver(Integer delta){
+        if( delta == 0 ){
+            return true;
+        }else{
+            return false;
+        }
     }
 
 
