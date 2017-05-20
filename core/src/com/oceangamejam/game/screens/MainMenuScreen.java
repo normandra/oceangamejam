@@ -18,6 +18,8 @@ public class MainMenuScreen implements Screen{
     Texture playButtonInactive;
     Texture exitButtonActive;
     Texture exitButtonInactive;
+    
+    Texture mainMenuBackground;
 
     private static final int EXIT_BUTTON_WIDTH = 150;
     private static final int EXIT_BUTTON_HEIGHT = 75;
@@ -38,7 +40,6 @@ public class MainMenuScreen implements Screen{
         Gdx.gl.glClearColor(0.15f, 0.15f, 0.3f, 1);
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 		game.batch.begin();
-                
                 
                 int x = Gdx.graphics.getWidth() / 2 - PLAY_BUTTON_WIDTH / 2;
                 int y = Gdx.graphics.getHeight() / 2 + PLAY_BUTTON_HEIGHT / 2 ;
