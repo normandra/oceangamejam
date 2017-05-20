@@ -35,12 +35,12 @@ public class AssetLoader {
         ddright = new Texture("BoatySprites/south-east.png");
         ddleft = new Texture("BoatySprites/south-west.png");
 
-        playButtonActive = new Texture("playHover.png");
-        playButtonInactive = new Texture("PlayNormal.png");
-        exitButtonActive = new Texture("exitHover.png");
-        exitButtonInactive = new Texture("exitNormal.png");
+        playButtonActive = new Texture("PlayNormal.png");
+        playButtonInactive = new Texture("PlayHover.png");
+        exitButtonActive = new Texture("ExitNormal.png");
+        exitButtonInactive = new Texture("ExitHover.png");
         
-        mainMenuBackground = new Texture("MenuBackGround.png");
+        mainMenuBackground = new Texture("map01.png");
 
     }
 
@@ -59,6 +59,8 @@ public class AssetLoader {
         playButtonInactive.dispose();
         exitButtonActive.dispose();
         exitButtonInactive.dispose();
+        
+        mainMenuBackground.dispose();
 
     }
 
