@@ -53,12 +53,6 @@ public class AssetLoader {
         ddright = new Texture("BoatySprites/south-east.png");
         ddleft = new Texture("BoatySprites/south-west.png");
 
-        playButtonActive = new Texture("PlayNormal.png");
-        playButtonInactive = new Texture("PlayHover.png");
-        exitButtonActive = new Texture("ExitNormal.png");
-        exitButtonInactive = new Texture("ExitHover.png");
-        
-        mainMenuBackground = new Texture("map01.png");
         playButtonActive = new Texture("menuUi/PlayHover.png");
         playButtonInactive = new Texture("menuUi/PlayNormal.png");
         exitButtonActive = new Texture("menuUi/ExitHover.png");
