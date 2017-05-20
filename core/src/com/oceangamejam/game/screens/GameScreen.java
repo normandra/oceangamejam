@@ -73,7 +73,7 @@ public class GameScreen implements Screen {
         ocam.position.set(player.getX(),player.getY(),0);
         ocam.update();
 
-        player.render();
+
 
 
 
@@ -85,7 +85,7 @@ public class GameScreen implements Screen {
             n.render();
         }
 
-        fishOver.batch.draw(player.getCurrent(), player.getX(), player.getY());
+        player.render();
 
 
         fishOver.batch.end();

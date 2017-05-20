@@ -104,6 +104,8 @@ public class Ship extends Objects {
     public void render() {
     	updateMotion();
     	updateShipAssets();
+        fishOver.batch.draw(getCurrent(), getX(), getY());
+
     }
     
     public void updateShipAssets() {
