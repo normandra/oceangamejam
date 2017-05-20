@@ -124,7 +124,7 @@ public class Ship extends Objects {
     	updateMotion();
     	updateShipAssets();
         time += Gdx.graphics.getDeltaTime();
-        if (xVelocity!=0 && yVelocity != 0){
+        if (xVelocity!=0 || yVelocity != 0){
 //        	if(time > 0.1f){
 //        		time = 0;
         		trail.addNewPoint(getX(), getY());
