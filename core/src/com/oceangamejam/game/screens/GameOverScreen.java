@@ -7,6 +7,7 @@ package com.oceangamejam.game.screens;
 
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
@@ -45,7 +46,7 @@ public class GameOverScreen implements Screen{
         table.setFillParent(true);
         
         Label gameOverLabel = new Label("GAME OVER", fontx);
-        Label playAgainLabel = new Label("Click to Play Again", fontx);
+        Label playAgainLabel = new Label("Press Space to Play Again", fontx);
         
         
         table.add(gameOverLabel).expandX();
@@ -61,7 +62,7 @@ public class GameOverScreen implements Screen{
 
     @Override
     public void render(float delta) {
-        if(Gdx.input.justTouched()){
+        if(Gdx.input.isKeyPressed(Keys.SPACE)){
             game.setScreen(new GameScreen((FishOver) game));
             dispose();
         }
