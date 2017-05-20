@@ -47,24 +47,24 @@ public class MainMenuScreen implements Screen{
                 int y = Gdx.graphics.getHeight() / 8 + PLAY_BUTTON_HEIGHT / 2 ;
                 if(Gdx.input.getX() < x + PLAY_BUTTON_WIDTH && Gdx.input.getX() > x && 
                    Gdx.graphics.getHeight() - Gdx.input.getY() < y + PLAY_BUTTON_HEIGHT && Gdx.graphics.getHeight() - Gdx.input.getY() > y){
-                    game.batch.draw(game.as.playButtonInactive, x, y, PLAY_BUTTON_WIDTH, PLAY_BUTTON_HEIGHT);
+                    game.batch.draw(game.as.playButtonActive, x, y, PLAY_BUTTON_WIDTH, PLAY_BUTTON_HEIGHT);
                     if(Gdx.input.isTouched()){
                         this.dispose();
                         game.setScreen(new GameScreen(game));
                     }
                 }else{
-                    game.batch.draw(game.as.playButtonActive, x, y, PLAY_BUTTON_WIDTH, PLAY_BUTTON_HEIGHT);
+                    game.batch.draw(game.as.playButtonInactive, x, y, PLAY_BUTTON_WIDTH, PLAY_BUTTON_HEIGHT);
                 }
                 x = Gdx.graphics.getWidth() / 2 - EXIT_BUTTON_WIDTH / 2;
                 y = Gdx.graphics.getHeight() / 8 - EXIT_BUTTON_HEIGHT / 2;
                 if(Gdx.input.getX() < x + EXIT_BUTTON_WIDTH && Gdx.input.getX() > x && 
                    Gdx.graphics.getHeight() - Gdx.input.getY() < y + EXIT_BUTTON_HEIGHT && Gdx.graphics.getHeight() - Gdx.input.getY() > y){
-                    game.batch.draw(game.as.exitButtonInactive, x, y, EXIT_BUTTON_WIDTH, EXIT_BUTTON_HEIGHT);
+                    game.batch.draw(game.as.exitButtonActive, x, y, EXIT_BUTTON_WIDTH, EXIT_BUTTON_HEIGHT);
                     if(Gdx.input.isTouched()){
                         Gdx.app.exit();
                     }
                 }else{
-                    game.batch.draw(game.as.exitButtonActive, x, y, EXIT_BUTTON_WIDTH, EXIT_BUTTON_HEIGHT);
+                    game.batch.draw(game.as.exitButtonInactive, x, y, EXIT_BUTTON_WIDTH, EXIT_BUTTON_HEIGHT);
                 }
                 game.batch.end();
     }
