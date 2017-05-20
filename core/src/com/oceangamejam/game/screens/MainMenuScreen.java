@@ -10,7 +10,7 @@ import com.oceangamejam.game.FishOver;
  * Created by norman on 5/20/17.
  */
 
-public class MainMenuSceen implements Screen{
+public class MainMenuScreen implements Screen{
 
     FishOver game;
     
@@ -24,16 +24,8 @@ public class MainMenuSceen implements Screen{
     private static final int PLAY_BUTTON_WIDTH = 150;
     private static final int PLAY_BUTTON_HEIGHT = 75;
     
-    public MainMenuSceen(FishOver game){
+    public MainMenuScreen(FishOver game){
         this.game = game;
-        
-        playButtonActive = new Texture("play_button_active.png");
-	playButtonInactive = new Texture("play_button_inactive.png");
-	exitButtonActive = new Texture("exit_button_active.png");
-	exitButtonInactive = new Texture("exit_button_inactive.png");
-        
-        
-        
     }
     
     @Override
@@ -52,24 +44,24 @@ public class MainMenuSceen implements Screen{
                 int y = Gdx.graphics.getHeight() / 2 + PLAY_BUTTON_HEIGHT / 2 ;
                 if(Gdx.input.getX() < x + PLAY_BUTTON_WIDTH && Gdx.input.getX() > x && 
                    Gdx.graphics.getHeight() - Gdx.input.getY() < y + PLAY_BUTTON_HEIGHT && Gdx.graphics.getHeight() - Gdx.input.getY() > y){
-                    game.batch.draw(playButtonInactive, x, y, PLAY_BUTTON_WIDTH, PLAY_BUTTON_HEIGHT);
+                    game.batch.draw(game.as.playButtonInactive, x, y, PLAY_BUTTON_WIDTH, PLAY_BUTTON_HEIGHT);
                     if(Gdx.input.isTouched()){
                         this.dispose();
                         game.setScreen(new GameScreen(game));
                     }
                 }else{
-                    game.batch.draw(playButtonActive, x, y, PLAY_BUTTON_WIDTH, PLAY_BUTTON_HEIGHT);
+                    game.batch.draw(game.as.playButtonActive, x, y, PLAY_BUTTON_WIDTH, PLAY_BUTTON_HEIGHT);
                 }
                 x = Gdx.graphics.getWidth() / 2 - EXIT_BUTTON_WIDTH / 2;
                 y = Gdx.graphics.getHeight() / 2 - EXIT_BUTTON_HEIGHT / 2;
                 if(Gdx.input.getX() < x + EXIT_BUTTON_WIDTH && Gdx.input.getX() > x && 
                    Gdx.graphics.getHeight() - Gdx.input.getY() < y + EXIT_BUTTON_HEIGHT && Gdx.graphics.getHeight() - Gdx.input.getY() > y){
-                    game.batch.draw(exitButtonInactive, x, y, EXIT_BUTTON_WIDTH, EXIT_BUTTON_HEIGHT);
+                    game.batch.draw(game.as.exitButtonInactive, x, y, EXIT_BUTTON_WIDTH, EXIT_BUTTON_HEIGHT);
                     if(Gdx.input.isTouched()){
                         Gdx.app.exit();
                     }
                 }else{
-                    game.batch.draw(exitButtonActive, x, y, EXIT_BUTTON_WIDTH, EXIT_BUTTON_HEIGHT);
+                    game.batch.draw(game.as.exitButtonActive, x, y, EXIT_BUTTON_WIDTH, EXIT_BUTTON_HEIGHT);
                 }
                 game.batch.end();
     }

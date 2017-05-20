@@ -8,6 +8,7 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.oceangamejam.game.helper.AssetLoader;
 import com.oceangamejam.game.screens.GameScreen;
+import com.oceangamejam.game.screens.MainMenuScreen;
 
 public class FishOver extends Game {
 	public SpriteBatch batch;
@@ -19,7 +20,7 @@ public class FishOver extends Game {
 		batch = new SpriteBatch();
 		as = new AssetLoader();
 
-		setScreen(new GameScreen(this));
+		setScreen(new MainMenuScreen(this));
 	}
 
 	@Override

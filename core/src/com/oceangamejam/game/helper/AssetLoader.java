@@ -18,9 +18,9 @@ public class AssetLoader {
     public Texture img;
     public Texture left, duleft, up, duright,right,ddright,down,ddleft;
 
+    public Texture playButtonActive,playButtonInactive,exitButtonActive,exitButtonInactive;
+
     public AssetLoader(){
-        assets = new AssetManager();
-        img = new Texture("badlogic.jpg");
 
         //boat textureRegion
         left = new Texture("BoatySprites/west.png");
@@ -32,10 +32,30 @@ public class AssetLoader {
         duright = new Texture("BoatySprites/nord-ost.png");
         ddright = new Texture("BoatySprites/south-east.png");
         ddleft = new Texture("BoatySprites/south-west.png");
+
+        playButtonActive = new Texture("play_button_active.png");
+        playButtonInactive = new Texture("play_button_inactive.png");
+        exitButtonActive = new Texture("exit_button_active.png");
+        exitButtonInactive = new Texture("exit_button_inactive.png");
+
     }
 
     public void dispose() {
-        img.dispose();
+        left.dispose();
+        right.dispose();
+        down.dispose();
+        up.dispose();
+
+        duleft.dispose();
+        duright.dispose();
+        ddright.dispose();
+        ddleft.dispose();
+
+        playButtonActive.dispose();
+        playButtonInactive.dispose();
+        exitButtonActive.dispose();
+        exitButtonInactive.dispose();
+
     }
 
 }
