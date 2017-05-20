@@ -8,6 +8,7 @@ import com.badlogic.gdx.graphics.Camera;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.oceangamejam.game.FishOver;
+import com.oceangamejam.game.Scenes.Hud;
 import com.oceangamejam.game.gameobjects.Fish;
 import com.oceangamejam.game.gameobjects.Sardines;
 import com.oceangamejam.game.gameobjects.Ship;
@@ -34,6 +35,8 @@ public class GameScreen implements Screen {
 
 
     private Camera ocam;
+    
+    private Hud hud;
 
 
 
@@ -46,6 +49,8 @@ public class GameScreen implements Screen {
 
 
         ocam = new OrthographicCamera(600, 600 * (h/w));
+        
+        hud = new Hud(fishOver.batch, ocam);
 
         player = new Ship(10,10, fishOver.as.right, fishOver);
         ip = new InputHandlerGame(player,fishOver);
@@ -73,22 +78,27 @@ public class GameScreen implements Screen {
         ocam.position.set(player.getX(),player.getY(),0);
         ocam.update();
 
-
+        //update hud
+        hud.update(delta);
 
 
 
         Gdx.gl.glClearColor(10/255f, 152/255f, 172/255f, 1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
+                           
+
+        
         fishOver.batch.begin();
 
         for (Fish n : fishCollection){
             n.render();
         }
-
+        
         player.render();
-
+ 
 
         fishOver.batch.end();
+               hud.stage.draw();
 
     }
 

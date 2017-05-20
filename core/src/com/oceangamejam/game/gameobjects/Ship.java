@@ -146,11 +146,12 @@ public class Ship extends Objects {
         if (trail.trail.size()>0)
         	i = trail.trail.get(0);
 
-        fishOver.batch.draw(fishOver.as.net, i[0], i[1]);
+        fishOver.batch.draw(fishOver.as.net, i[0] - 5, i[1],20,20);
         fishOver.batch.draw(getCurrent(), getX(), getY());
 
     }
-    
+
+
     public void updateShipAssets() {
     	if (upMove) {
     		if (rightMove) this.setCurrent(fishOver.as.duright);
