@@ -90,9 +90,14 @@ public class GameScreen implements Screen {
         
         fishOver.batch.begin();
 
-        for (Fish n : fishCollection){
-            n.render();
+        for (int i = 0; i < fishCollection.size();i++){
+            fishCollection.get(i).render();
+            if (fishCollection.get(i).checkCollision(player.net)){
+                hud.score++;
+                fishCollection.remove(i);
+            }
         }
+
         
         player.render();
  

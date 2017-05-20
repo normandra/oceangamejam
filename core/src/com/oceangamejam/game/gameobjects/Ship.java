@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.math.Circle;
 import com.oceangamejam.game.FishOver;
 
 /**
@@ -19,6 +20,7 @@ public class Ship extends Objects {
     private FishOver fishOver;
     private ShipTrail trail;
     private float time;
+	public Circle net;
 	
 	void updateMotion(){
 		updateVelocity();
@@ -101,6 +103,7 @@ public class Ship extends Objects {
         this.current = current;
         this.fishOver = fishOver;
         trail = new ShipTrail();
+		net = new Circle(x-5,y,30);
     }
 
     @Override
@@ -118,13 +121,14 @@ public class Ship extends Objects {
         for (Integer[] i : trail.trail){
         	fishOver.batch.draw(fishOver.as.trail,i[0],i[1]);
         }
+
         Integer[] i = {getX(),getY()};
         if (trail.trail.size()>0)
         	i = trail.trail.get(0);
 
         fishOver.batch.draw(fishOver.as.net, i[0] - 5, i[1],20,20);
         fishOver.batch.draw(getCurrent(), getX(), getY());
-        
+        net.setPosition(i[0],i[1]);
     }
 
 
