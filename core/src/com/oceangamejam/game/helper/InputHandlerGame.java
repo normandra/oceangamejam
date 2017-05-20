@@ -2,6 +2,7 @@ package com.oceangamejam.game.helper;
 
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.InputProcessor;
+import com.oceangamejam.game.FishOver;
 import com.oceangamejam.game.gameobjects.Objects;
 import com.oceangamejam.game.gameobjects.Ship;
 
@@ -12,9 +13,11 @@ import com.oceangamejam.game.gameobjects.Ship;
 public class InputHandlerGame implements InputProcessor {
 
     private Ship player;
+    private FishOver fo;
 
-    public InputHandlerGame(Ship player){
+    public InputHandlerGame(Ship player, FishOver fishOver){
         this.player = player;
+        this.fo = fishOver;
     }
 
     @Override

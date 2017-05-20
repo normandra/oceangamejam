@@ -40,7 +40,7 @@ public class GameScreen implements Screen {
         ocam = new OrthographicCamera(600, 600 * (h/w));
 
         player = new Ship(10,10, fishOver.as.right);
-        ip = new InputHandlerGame(player);
+        ip = new InputHandlerGame(player,fishOver);
         Gdx.input.setInputProcessor(ip);
     }
 
