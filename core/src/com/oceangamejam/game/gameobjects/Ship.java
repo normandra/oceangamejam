@@ -89,5 +89,19 @@ public class Ship extends Objects {
     @Override
     public void render() {
     	updateMotion();
+    	updateShipAssets();
     }
+    
+    public void updateShipAssets() {
+    	if (upMove) {
+    		if (rightMove) this.setCurrent(fishOver.as.duright);
+    		else if (leftMove) this.setCurrent(fishOver.as.duleft);
+    		else this.setCurrent(fishOver.as.up);
+    	} else if (downMove) {
+    		if (rightMove) this.setCurrent(fishOver.as.ddright);
+    		else if (leftMove) this.setCurrent(fishOver.as.ddleft);
+    		else this.setCurrent(fishOver.as.down);
+    	} else if (rightMove) this.setCurrent(fishOver.as.right);
+    	else if (leftMove) this.setCurrent(fishOver.as.left);
+	}
 }
