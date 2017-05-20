@@ -29,16 +29,27 @@ public class Ship extends Objects {
 	
 	void updateVelocity(){
 		float deltaTime = Gdx.graphics.getDeltaTime();
-		if (leftMove && Math.abs(xVelocity) < threshhold) {
-			if (xVelocity>0) xVelocity -= 4 * deltaTime;
 
-			xVelocity -= 3 * deltaTime;
-		}
-		
-		if (rightMove && Math.abs(xVelocity) < threshhold) { 
-			if (xVelocity<0) xVelocity += 4 * deltaTime;
+		if (Math.abs(xVelocity) < threshhold) {
+			if (leftMove && !rightMove) {
+				if (xVelocity > 0) {
+					xVelocity -= 4 * deltaTime;
+				}
+				xVelocity -= 3 * deltaTime;
+			}
 
-			xVelocity += 3 * deltaTime;
+			if (rightMove) {
+				if (xVelocity<0) {
+					xVelocity += 4 * deltaTime;
+				}
+				xVelocity += 3 * deltaTime;
+			}
+		}else if (Math.abs(xVelocity)>threshhold){
+			if (xVelocity>0){
+				xVelocity = threshhold-1;
+			}else{
+				xVelocity = -threshhold+1;
+			}
 		}
 		
 		if (!rightMove && !leftMove && Math.abs(xVelocity) > 0) {
@@ -52,14 +63,27 @@ public class Ship extends Objects {
 			else xVelocity = 0;
 		}
 			
-		if (downMove && Math.abs(yVelocity) < threshhold) {
-			if(yVelocity>0) yVelocity -= 4 * deltaTime;
-			yVelocity -= 3 * deltaTime;
-		}
+
 		
-		if (upMove && Math.abs(yVelocity) < threshhold) {
-			if(yVelocity<0) yVelocity += 4 * deltaTime;
-			yVelocity += 3 * deltaTime;
+		if ( Math.abs(yVelocity) < threshhold) {
+			if (upMove) {
+				if (yVelocity < 0) {
+					yVelocity += 4 * deltaTime;
+				}
+				yVelocity += 3 * deltaTime;
+			}
+			if (downMove) {
+				if(yVelocity>0){
+					yVelocity -= 4 * deltaTime;
+				}
+				yVelocity -= 3 * deltaTime;
+			}
+		}else if (Math.abs(yVelocity)>threshhold){
+			if (yVelocity>0){
+				yVelocity = threshhold-1;
+			}else{
+				yVelocity = -threshhold+1;
+			}
 		}
 		
 		if (!upMove && !downMove && Math.abs(yVelocity) > 0) {
@@ -124,7 +148,7 @@ public class Ship extends Objects {
 
         fishOver.batch.draw(fishOver.as.net, i[0], i[1]);
         fishOver.batch.draw(getCurrent(), getX(), getY());
-        
+
     }
     
     public void updateShipAssets() {
