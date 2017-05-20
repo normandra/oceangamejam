@@ -21,7 +21,7 @@ public class Ship extends Objects {
     private ShipTrail trail;
     private float time;
 	public Circle net;
-	
+
 	void updateMotion(){
 		updateVelocity();
 		x += xVelocity;
@@ -54,14 +54,27 @@ public class Ship extends Objects {
 			else xVelocity = 0;
 		}
 			
-		if (downMove && Math.abs(yVelocity) < threshhold) {
-			if(yVelocity>0) yVelocity -= 4 * deltaTime;
-			yVelocity -= 3 * deltaTime;
-		}
+
 		
-		if (upMove && Math.abs(yVelocity) < threshhold) {
-			if(yVelocity<0) yVelocity += 4 * deltaTime;
-			yVelocity += 3 * deltaTime;
+		if ( Math.abs(yVelocity) < threshhold) {
+			if (upMove) {
+				if (yVelocity < 0) {
+					yVelocity += 4 * deltaTime;
+				}
+				yVelocity += 3 * deltaTime;
+			}
+			if (downMove) {
+				if(yVelocity>0){
+					yVelocity -= 4 * deltaTime;
+				}
+				yVelocity -= 3 * deltaTime;
+			}
+		}else if (Math.abs(yVelocity)>threshhold){
+			if (yVelocity>0){
+				yVelocity = threshhold-1;
+			}else{
+				yVelocity = -threshhold+1;
+			}
 		}
 		
 		if (!upMove && !downMove && Math.abs(yVelocity) > 0) {

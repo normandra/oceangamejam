@@ -54,7 +54,7 @@ public class Hud {
         font = new BitmapFont();
         font.getData().setScale(2.5f,2.5f);
         
-        countdownLabel = new Label(String.format("%03d", worldTimer), new Label.LabelStyle(font, Color.WHITE));
+        countdownLabel = new Label(String.format("%02d:%02d", worldTimer / 60, worldTimer % 60), new Label.LabelStyle(font, Color.WHITE));
         scoreLabel = new Label(String.format("%03d", score), new Label.LabelStyle(font, Color.WHITE));
         timeLabel = new Label("TIME", new Label.LabelStyle(font, Color.WHITE));
         fishLabel = new Label("FISHES", new Label.LabelStyle(font, Color.WHITE));
@@ -72,6 +72,7 @@ public class Hud {
         timeCount += dt;
         if(timeCount >= 1 ){
             worldTimer--;
+            countdownLabel.setText(String.format("%02d:%02d", worldTimer / 60, worldTimer % 60));
             countdownLabel.setText(String.format("%03d", worldTimer));
             scoreLabel.setText(String.format("%03d", score));
             timeCount = 0;
