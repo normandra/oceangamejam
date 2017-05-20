@@ -23,6 +23,7 @@ public class AssetLoader {
 
     public Texture mainMenuBackground;
 
+    public Texture trail, net;
 
     private Texture sardineTexture;
     public Animation<TextureRegion> sardines;
@@ -57,6 +58,9 @@ public class AssetLoader {
         playButtonInactive = new Texture("menuUi/PlayNormal.png");
         exitButtonActive = new Texture("menuUi/ExitHover.png");
         exitButtonInactive = new Texture("menuUi/ExitNormal.png");
+        
+        trail = new Texture("Trail01.png");
+        net = new Texture("Net.png");
 
         mainMenuBackground = new Texture("menuUi/Map01.png");
 
@@ -78,8 +82,8 @@ public class AssetLoader {
         exitButtonActive.dispose();
         exitButtonInactive.dispose();
         
-        mainMenuBackground.dispose();
-
+        trail.dispose();
+        net.dispose();
         mainMenuBackground.dispose();
 
     }

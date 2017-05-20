@@ -17,6 +17,8 @@ public class Ship extends Objects {
 	static double threshhold = 6;
 	double xVelocity, yVelocity;
     private FishOver fishOver;
+    private ShipTrail trail;
+    private float time;
 	
 	void updateMotion(){
 		updateVelocity();
@@ -98,14 +100,31 @@ public class Ship extends Objects {
         super(x, y);
         this.current = current;
         this.fishOver = fishOver;
+        trail = new ShipTrail();
     }
 
     @Override
     public void render() {
     	updateMotion();
     	updateShipAssets();
-        fishOver.batch.draw(getCurrent(), getX(), getY());
+        time += Gdx.graphics.getDeltaTime();
+        if (xVelocity!=0 && yVelocity != 0){
+//        	if(time > 0.1f){
+//        		time = 0;
+        		trail.addNewPoint(getX(), getY());
+//        	}
+        }
+        
+        for (Integer[] i : trail.trail){
+        	fishOver.batch.draw(fishOver.as.trail,i[0],i[1]);
+        }
+        Integer[] i = {getX(),getY()};
+        if (trail.trail.size()>0)
+        	i = trail.trail.get(0);
 
+        fishOver.batch.draw(fishOver.as.net, i[0], i[1]);
+        fishOver.batch.draw(getCurrent(), getX(), getY());
+        
     }
     
     public void updateShipAssets() {
