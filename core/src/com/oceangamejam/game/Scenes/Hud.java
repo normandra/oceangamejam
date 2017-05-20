@@ -40,7 +40,7 @@ public class Hud {
     Label fishLabel;
     
     public Hud(SpriteBatch sb,Camera ocam){
-        worldTimer = 300;
+        worldTimer = 3;
         timeCount = 0;
         score = 0;
         
@@ -73,7 +73,6 @@ public class Hud {
         if(timeCount >= 1 ){
             worldTimer--;
             countdownLabel.setText(String.format("%02d:%02d", worldTimer / 60, worldTimer % 60));
-            countdownLabel.setText(String.format("%03d", worldTimer));
             scoreLabel.setText(String.format("%03d", score));
             timeCount = 0;
         }
