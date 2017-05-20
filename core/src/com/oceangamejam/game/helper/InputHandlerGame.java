@@ -3,6 +3,7 @@ package com.oceangamejam.game.helper;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.InputProcessor;
 import com.oceangamejam.game.gameobjects.Objects;
+import com.oceangamejam.game.gameobjects.Ship;
 
 /**
  * Created by norman on 5/20/17.
@@ -10,9 +11,9 @@ import com.oceangamejam.game.gameobjects.Objects;
 
 public class InputHandlerGame implements InputProcessor {
 
-    private Objects player;
+    private Ship player;
 
-    public InputHandlerGame(Objects player){
+    public InputHandlerGame(Ship player){
         this.player = player;
     }
 
@@ -21,19 +22,19 @@ public class InputHandlerGame implements InputProcessor {
         switch (keycode)
         {
             case Input.Keys.LEFT:
-                player.setX(player.getX() - 10);
+                player.setLeftMove(true);
                 break;
 
             case Input.Keys.RIGHT:
-                player.setX(player.getX() + 10);
+                player.setRightMove(true);
                 break;
 
             case Input.Keys.UP:
-                player.setY(player.getY() + 10);
+                player.setUpMove(true);
                 break;
 
             case Input.Keys.DOWN:
-                player.setY(player.getY() - 10);
+                player.setDownMove(true);
                 break;
         }
         return true;
@@ -41,7 +42,25 @@ public class InputHandlerGame implements InputProcessor {
 
     @Override
     public boolean keyUp(int keycode) {
-        return false;
+    	switch (keycode)
+        {
+            case Input.Keys.LEFT:
+                player.setLeftMove(false);
+                break;
+
+            case Input.Keys.RIGHT:
+                player.setRightMove(false);
+                break;
+
+            case Input.Keys.UP:
+                player.setUpMove(false);
+                break;
+
+            case Input.Keys.DOWN:
+                player.setDownMove(false);
+                break;
+        }
+        return true;
     }
 
     @Override
