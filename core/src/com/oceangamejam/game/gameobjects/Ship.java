@@ -31,18 +31,30 @@ public class Ship extends Objects {
 	
 	void updateVelocity(){
 		float deltaTime = Gdx.graphics.getDeltaTime();
-		if (leftMove && Math.abs(xVelocity) < threshhold) {
-			if (xVelocity>0) xVelocity -= 4 * deltaTime;
+		if (Math.abs(xVelocity) < threshhold) {
+            if (leftMove) {
+                if (xVelocity > 0) {
+                    xVelocity -= 4 * deltaTime;
+                }
 
-			xVelocity -= 3 * deltaTime;
-		}
-		
-		if (rightMove && Math.abs(xVelocity) < threshhold) { 
-			if (xVelocity<0) xVelocity += 4 * deltaTime;
+                xVelocity -= 3 * deltaTime;
+            }
 
-			xVelocity += 3 * deltaTime;
-		}
-		
+            if (rightMove) {
+                if (xVelocity < 0) {
+                    xVelocity += 4 * deltaTime;
+                }
+
+                xVelocity += 3 * deltaTime;
+            }
+        }else if (Math.abs(xVelocity)>threshhold) {
+            if (xVelocity > 0) {
+                xVelocity = threshhold - 1;
+            } else {
+                xVelocity = -threshhold + 1;
+            }
+        }
+
 		if (!rightMove && !leftMove && Math.abs(xVelocity) > 0) {
 			
 			if (xVelocity < 0.5)
