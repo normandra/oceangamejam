@@ -14,6 +14,7 @@ public class Ship extends Objects {
 	boolean leftMove, rightMove, upMove, downMove;
 	static double threshhold = 15;
 	double xVelocity, yVelocity;
+    private FishOver fishOver;
 	
 	void updateMotion(){
 		updateVelocity();
@@ -79,9 +80,10 @@ public class Ship extends Objects {
 		downMove = t;
 	}
 
-    public Ship(int x, int y, Texture current) {
+    public Ship(int x, int y, Texture current, FishOver fishOver) {
         super(x, y);
         this.current = current;
+        this.fishOver = fishOver;
     }
 
     @Override
