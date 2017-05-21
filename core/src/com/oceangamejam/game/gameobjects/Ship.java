@@ -67,9 +67,9 @@ public class Ship extends Objects {
             }
         }
 
-		if (!rightMove && !leftMove && Math.abs(xVelocity) > 0) {
+		if (!rightMove && !leftMove && Math.abs(xVelocity) != 0) {
 			
-			if (xVelocity < 0.5)
+			if (xVelocity < -0.5)
 				xVelocity += 5 * deltaTime;
 			
 			else if (xVelocity > 0.5)
@@ -101,9 +101,9 @@ public class Ship extends Objects {
 			}
 		}
 		
-		if (!upMove && !downMove && Math.abs(yVelocity) > 0) {
+		if (!upMove && !downMove && Math.abs(yVelocity) != 0) {
 			
-			if (yVelocity < 0.5) 
+			if (yVelocity < -0.5)
 				yVelocity += 5 * deltaTime;
 			
 			else if (yVelocity>0.5) 
@@ -150,7 +150,7 @@ public class Ship extends Objects {
     	updateShipAssets();
         time += Gdx.graphics.getDeltaTime();
         if (xVelocity!=0 || yVelocity != 0){
-//
+			System.out.println(xVelocity + " "+ yVelocity);
         	trail.addNewPoint(getX(), getY());
 			if(time > 0.1f){
         		time = 0;
