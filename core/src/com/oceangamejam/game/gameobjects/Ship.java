@@ -42,7 +42,7 @@ public class Ship extends Objects {
 	
 	private void updateVelocity(){
 		float deltaTime = Gdx.graphics.getDeltaTime();
-		double threshold = 6;
+		double threshold = 5;
 		if (Math.abs(xVelocity) < threshold) {
             if (leftMove) {
                 if (xVelocity > 0) {
@@ -153,7 +153,7 @@ public class Ship extends Objects {
         	trail.addNewPoint(getX(), getY());
 			if(time > 0.1f){
         		time = 0;
-        		ripples.add(new Ripples(getX(),getY(),fishOver));
+        		ripples.add(new Ripples(getX()+7,getY(),fishOver));
         	}
         }
 
