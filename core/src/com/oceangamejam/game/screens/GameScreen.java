@@ -62,8 +62,15 @@ public class GameScreen implements Screen {
 
         fishCollection = new ArrayList<Fish>();
         for (int i = 0; i < 20; i++){
-            Sardines tmp =  new Sardines(((int) (Math.random() * Gdx.graphics.getWidth())), ((int) (Math.random() * Gdx.graphics.getHeight())),fishOver);
-            fishCollection.add(tmp);
+            int x = (int) (Math.random() * Gdx.graphics.getWidth());
+            int y = (int) (Math.random() * Gdx.graphics.getHeight());
+            Sardines tmp1 =  new Sardines(x+10,y+6,fishOver);
+            Sardines tmp2 =  new Sardines(x+5,y+4,fishOver);
+            Sardines tmp3 =  new Sardines(x+4,y+12,fishOver);
+
+            fishCollection.add(tmp1);
+            fishCollection.add(tmp2);
+            fishCollection.add(tmp3);
         }
 
     }
@@ -98,6 +105,8 @@ public class GameScreen implements Screen {
                 fishCollection.remove(i);
             }
         }
+
+
 
         
         player.render();

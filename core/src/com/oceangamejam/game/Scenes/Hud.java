@@ -40,7 +40,7 @@ public class Hud {
     Label fishLabel;
     
     public Hud(SpriteBatch sb,Camera ocam){
-        worldTimer = 3;
+        worldTimer = 20;
         timeCount = 0;
         score = 0;
         

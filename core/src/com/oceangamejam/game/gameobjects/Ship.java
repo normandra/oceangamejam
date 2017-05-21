@@ -128,7 +128,7 @@ public class Ship extends Objects {
         this.current = current;
         this.fishOver = fishOver;
         trail = new ShipTrail();
-		net = new Circle(x-5,y,30);
+		net = new Circle(x+2,y+2,4);
     }
 
     @Override
