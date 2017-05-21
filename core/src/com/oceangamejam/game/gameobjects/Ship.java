@@ -25,6 +25,16 @@ public class Ship extends Objects {
 		updateVelocity();
 		x += xVelocity;
 		y += yVelocity;
+		if (x<0) {
+			x = 0;
+		}else if (x>Gdx.graphics.getWidth()-20){
+			x = Gdx.graphics.getWidth()-20;
+		}
+		if (y<0) {
+			y = 0;
+		}else if (y>Gdx.graphics.getHeight()-30){
+			y = Gdx.graphics.getHeight()-30;
+		}
 		
 	}
 	

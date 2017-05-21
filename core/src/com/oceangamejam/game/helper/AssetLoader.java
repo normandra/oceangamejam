@@ -22,7 +22,7 @@ public class AssetLoader {
 
     public Texture trail, netLeftRight, netUpDown, netRightDownLeftUp, netRightUpLeftDown;
 
-    private Texture sardineTexture, rippleTexture;
+    private Texture rippleTexture;
 
     public Texture barrierDownR, barrierUp;
 
