@@ -27,6 +27,7 @@ public class GameScreen implements Screen {
     private InputHandlerGame ip;
 
     private Ship player;
+    private float mTimer = 0, sTimer = 0;
 
     //fishes
     private ArrayList<Sardines> fishCollection;
@@ -93,7 +94,30 @@ public class GameScreen implements Screen {
     public void show() {
 
     }
+    public void FlowersAndBees(){
+        int fishMax = 300;
+        sTimer+=Gdx.graphics.getDeltaTime();
+        mTimer+=Gdx.graphics.getDeltaTime();
+        if(fishCollection.size()<3||fishmCollection.size()<3){
+            hud.worldTimer =0;
+        }
+        if(sTimer>100/fishCollection.size() && fishCollection.size()<fishMax) {
+            int x = (int) (Math.random() * Gdx.graphics.getWidth());
+            int y = (int) (Math.random() * Gdx.graphics.getHeight());
+            Sardines tmp1 = new Sardines(x + 10, y + 6, fishOver);
 
+
+            fishCollection.add(tmp1);
+            sTimer=0;
+        }
+        if(mTimer>200/fishmCollection.size() && fishmCollection.size()<fishMax) {
+            int x = (int) (Math.random() * Gdx.graphics.getWidth());
+            int y = (int) (Math.random() * Gdx.graphics.getHeight());
+            Mackarel tmp1 = new Mackarel(x + 10, y + 6, fishOver);
+            fishmCollection.add(tmp1);
+            mTimer=0;
+        }
+    }
     @Override
     public void render(float delta) {
         fishOver.batch.setProjectionMatrix(ocam.combined);
@@ -109,7 +133,7 @@ public class GameScreen implements Screen {
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
                            
 
-        
+        this.FlowersAndBees();
         fishOver.batch.begin();
 
         for (int i = 0; i < fishCollection.size();i++){

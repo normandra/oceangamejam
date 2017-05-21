@@ -41,4 +41,6 @@ public class Fish extends Objects {
     public boolean checkCollision(Circle net){
         return net.overlaps(fishBound);
     }
+
+
 }
