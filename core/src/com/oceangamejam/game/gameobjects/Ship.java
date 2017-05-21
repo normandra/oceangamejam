@@ -150,7 +150,6 @@ public class Ship extends Objects {
     	updateShipAssets();
         time += Gdx.graphics.getDeltaTime();
         if (xVelocity!=0 || yVelocity != 0){
-			System.out.println(xVelocity + " "+ yVelocity);
         	trail.addNewPoint(getX(), getY());
 			if(time > 0.1f){
         		time = 0;

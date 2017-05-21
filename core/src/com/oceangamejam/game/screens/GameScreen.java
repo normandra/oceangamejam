@@ -8,7 +8,6 @@ import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.oceangamejam.game.FishOver;
 import com.oceangamejam.game.Scenes.Hud;
-import com.oceangamejam.game.gameobjects.Fish;
 import com.oceangamejam.game.gameobjects.Mackarel;
 import com.oceangamejam.game.gameobjects.Sardines;
 import com.oceangamejam.game.gameobjects.Ship;
@@ -118,6 +117,7 @@ public class GameScreen implements Screen {
             fishCollection.get(i).render();
             if (fishCollection.get(i).checkCollision(player.net)){
                 hud.score++;
+                hud.worldTimer++;
                 fishCollection.remove(i);
             }
         }
@@ -126,6 +126,7 @@ public class GameScreen implements Screen {
             fishmCollection.get(i).render();
             if (fishmCollection.get(i).checkCollision(player.net)){
                 hud.score++;
+                hud.worldTimer++;
                 fishmCollection.remove(i);
             }
         }

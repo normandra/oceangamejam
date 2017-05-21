@@ -31,7 +31,7 @@ public class Hud {
     public Stage stage;
     private Viewport viewPort;
     
-    private Integer worldTimer;
+    public Integer worldTimer;
     private float timeCount;
     public Integer score;
 
@@ -54,8 +54,9 @@ public class Hud {
         timeCount = 0;
         score = 0;
 
-        map = new OrthographicCamera(Gdx.graphics.getWidth(),Gdx.graphics.getHeight());
-        
+        map = new OrthographicCamera(Gdx.graphics.getWidth()/2,Gdx.graphics.getHeight()/2);
+
+
         viewPort = new FitViewport(Gdx.graphics.getWidth(), Gdx.graphics.getHeight(), new OrthographicCamera());
         stage = new Stage(viewPort, sb);
         
@@ -98,15 +99,16 @@ public class Hud {
             fo.batch.begin();
 
 
+
             for (Sardines s : sardines) {
-                fo.batch.draw(fo.as.mapFish,s.getX(),s.getY());
+                fo.batch.draw(fo.as.mapFish,s.getX()/4,s.getY()/4);
             }
 
             for (Mackarel m : mackarels){
-                fo.batch.draw(fo.as.mapFish,m.getX(),m.getY());
+                fo.batch.draw(fo.as.mapFish,m.getX()/4,m.getY()/4);
             }
 
-            fo.batch.draw(fo.as.mapPlayer,player.getX(),player.getY());
+            fo.batch.draw(fo.as.mapPlayer,player.getX()/4,player.getY()/4);
 
 
             fo.batch.end();
