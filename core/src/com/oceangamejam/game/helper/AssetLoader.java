@@ -26,6 +26,8 @@ public class AssetLoader {
 
     public Texture barrierDownR, barrierUp;
 
+    public Texture mapFish,mapPlayer;
+
     private Texture sardineTexture;
     public Animation<TextureRegion> sardines;
     public Animation<TextureRegion> ripples;
@@ -95,11 +97,17 @@ public class AssetLoader {
         netRightDownLeftUp = new Texture("net-rightdown-leftup.png");
         netRightUpLeftDown = new Texture("net-rightup-leftdown.png");
 
+        mapFish = new Texture("OverViewFish.png");
+        mapPlayer = new Texture("OverViewPlayer.png");
+
         mainMenuBackground = new Texture("menuUi/Map01.png");
 
     }
 
     public void dispose() {
+        mapFish.dispose();
+        mapPlayer.dispose();
+
         left.dispose();
         right.dispose();
         down.dispose();
