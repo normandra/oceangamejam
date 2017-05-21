@@ -14,24 +14,24 @@ import com.oceangamejam.game.FishOver;
 public class Ship extends Objects {
 
 
-	boolean leftMove, rightMove, upMove, downMove;
-	static double threshhold = 6;
-	double xVelocity, yVelocity;
+	private boolean leftMove, rightMove, upMove, downMove;
+	private double xVelocity, yVelocity;
     private FishOver fishOver;
     private ShipTrail trail;
     private float time;
 	public Circle net;
 
-	void updateMotion(){
+	private void updateMotion(){
 		updateVelocity();
 		x += xVelocity;
 		y += yVelocity;
 		
 	}
 	
-	void updateVelocity(){
+	private void updateVelocity(){
 		float deltaTime = Gdx.graphics.getDeltaTime();
-		if (Math.abs(xVelocity) < threshhold) {
+		double threshold = 6;
+		if (Math.abs(xVelocity) < threshold) {
             if (leftMove) {
                 if (xVelocity > 0) {
                     xVelocity -= 4 * deltaTime;
@@ -47,11 +47,11 @@ public class Ship extends Objects {
 
                 xVelocity += 3 * deltaTime;
             }
-        }else if (Math.abs(xVelocity)>threshhold) {
+        }else if (Math.abs(xVelocity)> threshold) {
             if (xVelocity > 0) {
-                xVelocity = threshhold - 1;
+                xVelocity = threshold - 1;
             } else {
-                xVelocity = -threshhold + 1;
+                xVelocity = -threshold + 1;
             }
         }
 
@@ -68,7 +68,7 @@ public class Ship extends Objects {
 			
 
 		
-		if ( Math.abs(yVelocity) < threshhold) {
+		if ( Math.abs(yVelocity) < threshold) {
 			if (upMove) {
 				if (yVelocity < 0) {
 					yVelocity += 4 * deltaTime;
@@ -81,11 +81,11 @@ public class Ship extends Objects {
 				}
 				yVelocity -= 3 * deltaTime;
 			}
-		}else if (Math.abs(yVelocity)>threshhold){
+		}else if (Math.abs(yVelocity)> threshold){
 			if (yVelocity>0){
-				yVelocity = threshhold-1;
+				yVelocity = threshold -1;
 			}else{
-				yVelocity = -threshhold+1;
+				yVelocity = -threshold +1;
 			}
 		}
 		

@@ -22,10 +22,13 @@ public class AssetLoader {
 
     public Texture trail, netLeftRight, netUpDown, netRightDownLeftUp, netRightUpLeftDown;
 
+    private Texture sardineTexture, rippleTexture;
+
     public Texture barrierDownR, barrierUp;
 
     private Texture sardineTexture;
     public Animation<TextureRegion> sardines;
+    public Animation<TextureRegion> ripples;
 
     private Texture mackarelTexture;
     public Animation<TextureRegion> mackarel;
@@ -44,6 +47,17 @@ public class AssetLoader {
 
         }
         sardines = new Animation<TextureRegion>(0.3f,sardineFrames);
+
+        //ripple
+        rippleTexture = new Texture("WatterRippleNew.png"); // nice watter meme
+        tmp = TextureRegion.split(rippleTexture, rippleTexture.getWidth()/9,rippleTexture.getHeight());
+        TextureRegion[] rippleFrames = new TextureRegion[9];
+        index = 0;
+        for (int i = 0; i < 9; i++) {
+            rippleFrames[index++] = tmp[0][i];
+
+        }
+        ripples = new Animation<TextureRegion>(0.1f,rippleFrames);
 
         mackarelTexture = new Texture("fish/BigFishAnimation4Frames.png");
         tmp = TextureRegion.split(mackarelTexture,mackarelTexture.getWidth()/4,mackarelTexture.getHeight());
@@ -114,7 +128,7 @@ public class AssetLoader {
         sardineTexture.dispose();
         mackarelTexture.dispose();
 
-        
+
         mainMenuBackground.dispose();
 
     }
