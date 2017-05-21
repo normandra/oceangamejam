@@ -22,7 +22,7 @@ public class AssetLoader {
 
     public Texture trail, netLeftRight, netUpDown, netRightDownLeftUp, netRightUpLeftDown;
 
-    private Texture sardineTexture, rippleTexture;
+    private Texture rippleTexture;
 
     public Texture barrierDownR, barrierUp;
 
@@ -37,7 +37,7 @@ public class AssetLoader {
 
     public AssetLoader(){
 
-        //fish
+        //fishT
         sardineTexture = new Texture("fish/TinyFishAnimation4Frames.png");
         TextureRegion[][] tmp = TextureRegion.split(sardineTexture, sardineTexture.getWidth()/4,sardineTexture.getHeight());
         TextureRegion[] sardineFrames = new TextureRegion[4];
