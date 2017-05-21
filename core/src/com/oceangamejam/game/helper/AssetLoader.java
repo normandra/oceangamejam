@@ -18,7 +18,7 @@ public class AssetLoader {
 
     public Texture playButtonActive,playButtonInactive,exitButtonActive,exitButtonInactive;
 
-    public Texture mainMenuBackground;
+    public Texture mainMenuBackground, mainMenuLogo;
 
     public Texture trail, netLeftRight, netUpDown, netRightDownLeftUp, netRightUpLeftDown;
 
@@ -103,7 +103,7 @@ public class AssetLoader {
         mapPlayer = new Texture("OverViewPlayer.png");
 
         mainMenuBackground = new Texture("menuUi/Map01.png");
-
+        mainMenuLogo = new Texture("menuUi/Logo.png");
         //fish icon
         sardineUi = new Texture("fish/FishIconSmal.png");
         mackarelUi = new Texture("fish/FishIconMedium.png");
@@ -144,7 +144,7 @@ public class AssetLoader {
         sardineTexture.dispose();
         mackarelTexture.dispose();
 
-
+        mainMenuLogo.dispose();
         mainMenuBackground.dispose();
 
     }

@@ -42,7 +42,7 @@ public class MainMenuScreen implements Screen{
 		game.batch.begin();
                 
                 game.batch.draw(game.as.mainMenuBackground,0,0,Gdx.graphics.getWidth(),Gdx.graphics.getHeight());
-                
+                game.batch.draw(game.as.mainMenuLogo, Gdx.graphics.getWidth()/2-88*3, Gdx.graphics.getHeight()/2-49*2,88*6,49*6);
                 int x = Gdx.graphics.getWidth() / 2 - PLAY_BUTTON_WIDTH / 2;
                 int y = Gdx.graphics.getHeight() / 8 + PLAY_BUTTON_HEIGHT / 2 ;
                 if(Gdx.input.getX() < x + PLAY_BUTTON_WIDTH && Gdx.input.getX() > x && 
