@@ -99,14 +99,14 @@ public class Hud {
 
 
             for (Sardines s : sardines) {
-                fo.batch.draw(fo.as.trail,s.getX(),s.getY());
+                fo.batch.draw(fo.as.mapFish,s.getX(),s.getY());
             }
 
             for (Mackarel m : mackarels){
-                fo.batch.draw(fo.as.trail,m.getX(),m.getY());
+                fo.batch.draw(fo.as.mapFish,m.getX(),m.getY());
             }
 
-            fo.batch.draw(fo.as.trail,player.getX(),player.getY());
+            fo.batch.draw(fo.as.mapPlayer,player.getX(),player.getY());
 
 
             fo.batch.end();
