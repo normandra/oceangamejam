@@ -150,11 +150,12 @@ public class Ship extends Objects {
     	updateShipAssets();
         time += Gdx.graphics.getDeltaTime();
         if (xVelocity!=0 || yVelocity != 0){
-//        	if(time > 0.1f){
-//        		time = 0;
-        		trail.addNewPoint(getX(), getY());
-				ripples.add(new Ripples(getX(),getY(),fishOver));
-//        	}
+//
+        	trail.addNewPoint(getX(), getY());
+			if(time > 0.1f){
+        		time = 0;
+        		ripples.add(new Ripples(getX(),getY(),fishOver));
+        	}
         }
 
 		for (int i = 0; i < ripples.size(); i++) {
