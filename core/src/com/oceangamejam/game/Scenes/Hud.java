@@ -70,7 +70,7 @@ public class Hud {
         countdownLabel = new Label(String.format("%02d:%02d", worldTimer / 60, worldTimer % 60), new Label.LabelStyle(font, Color.WHITE));
         scoreLabel = new Label(String.format("%03d", score), new Label.LabelStyle(font, Color.WHITE));
         timeLabel = new Label("TIME", new Label.LabelStyle(font, Color.WHITE));
-        fishLabel = new Label("FISHES", new Label.LabelStyle(font, Color.WHITE));
+        fishLabel = new Label("CAUGHT FISHES", new Label.LabelStyle(font, Color.WHITE));
         
         table.add(fishLabel).expandX().padTop(10);
         table.add(timeLabel).expandX().padTop(10);
@@ -100,9 +100,24 @@ public class Hud {
 
             fo.batch.draw(fo.as.sardineUi,10,500,38*2,13*2);
             font.draw(fo.batch, " "+ sardines.size(),130,540);
+            if (sardines.size() < 10){
+                if (sardines.size() == 0){
+                    font.draw(fo.batch, "EXTINCT",170,540);
+                }else{
+                    font.draw(fo.batch, "ENDANGERED",170,540);
+                }
+            }
 
             fo.batch.draw(fo.as.mackarelUi,10,420, 56 *2 , 28*2);
             font.draw(fo.batch, " "+ mackarels.size(),130,450);
+            if (mackarels.size() < 10){
+                if (mackarels.size() == 0){
+                    font.draw(fo.batch, "EXTINCT",170,450);
+                }else{
+                    font.draw(fo.batch, "ENDANGERED",170,450);
+                }
+            }
+
 
             for (Sardines s : sardines) {
                 fo.batch.draw(fo.as.mapFish,s.getX()/3.5f,s.getY()/4);

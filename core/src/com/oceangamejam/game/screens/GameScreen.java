@@ -62,7 +62,7 @@ public class GameScreen implements Screen {
         //fish init
 
         fishCollection = new ArrayList<Sardines>();
-        for (int i = 0; i < 20; i++){
+        for (int i = 0; i < 1; i++){
             int x = (int) (Math.random() * fishOver.WIDTH);
             int y = (int) (Math.random() * fishOver.HEIGHT);
             Sardines tmp1 =  new Sardines(x+10,y+6,fishOver);
