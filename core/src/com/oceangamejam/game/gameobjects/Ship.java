@@ -161,7 +161,7 @@ public class Ship extends Objects {
 		for (int i = 0; i < ripples.size(); i++) {
 			Ripples rp = ripples.get(i);
 
-			if (rp.stateTime > 1f){
+			if (rp.stateTime > 0.9f){
 				ripples.remove(i);
 			}else{
 				rp.render();
