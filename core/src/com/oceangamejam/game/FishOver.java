@@ -14,6 +14,8 @@ public class FishOver extends Game {
 	public SpriteBatch batch;
 	public AssetLoader as;
 
+	public static final int WIDTH = 1280;
+	public static final int HEIGHT = 720;
 
 	@Override
 	public void create () {

@@ -44,9 +44,8 @@ public class GameScreen implements Screen {
         this.fishOver = fishOver;
 
 
-        float w = Gdx.graphics.getWidth();
-        float h = Gdx.graphics.getHeight();
-
+        float w = fishOver.WIDTH;
+        float h = fishOver.HEIGHT;
 
         ocam = new OrthographicCamera(400, 400 * (h/w));
         
@@ -64,8 +63,8 @@ public class GameScreen implements Screen {
 
         fishCollection = new ArrayList<Sardines>();
         for (int i = 0; i < 20; i++){
-            int x = (int) (Math.random() * Gdx.graphics.getWidth());
-            int y = (int) (Math.random() * Gdx.graphics.getHeight());
+            int x = (int) (Math.random() * fishOver.WIDTH);
+            int y = (int) (Math.random() * fishOver.HEIGHT);
             Sardines tmp1 =  new Sardines(x+10,y+6,fishOver);
             Sardines tmp2 =  new Sardines(x+5,y+4,fishOver);
             Sardines tmp3 =  new Sardines(x+4,y+12,fishOver);
@@ -77,8 +76,8 @@ public class GameScreen implements Screen {
 
         fishmCollection = new ArrayList<Mackarel>();
         for (int i = 0; i < 20; i++){
-            int x = (int) (Math.random() * Gdx.graphics.getWidth());
-            int y = (int) (Math.random() * Gdx.graphics.getHeight());
+            int x = (int) (Math.random() * fishOver.WIDTH);
+            int y = (int) (Math.random() * fishOver.HEIGHT);
             Mackarel tmp1 =  new Mackarel(x+10,y+6,fishOver);
             Mackarel tmp2 =  new Mackarel(x+5,y+4,fishOver);
             Mackarel tmp3 =  new Mackarel(x+4,y+12,fishOver);
