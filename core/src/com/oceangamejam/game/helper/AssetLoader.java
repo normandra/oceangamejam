@@ -37,6 +37,8 @@ public class AssetLoader {
 
     public Texture sardineUi,mackarelUi;
 
+    public Texture endbg;
+
 
 
     public AssetLoader(){
@@ -107,9 +109,12 @@ public class AssetLoader {
         //fish icon
         sardineUi = new Texture("fish/FishIconSmal.png");
         mackarelUi = new Texture("fish/FishIconMedium.png");
-    }
 
+        endbg = new Texture("menuUi/DeathScreen.png");
+    }
     public void dispose() {
+        endbg.dispose();
+
         sardineUi.dispose();
         mackarelUi.dispose();
 

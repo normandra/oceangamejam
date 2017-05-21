@@ -33,6 +33,7 @@ public class GameScreen implements Screen {
     private ArrayList<Sardines> fishCollection;
     private ArrayList<Mackarel> fishmCollection;
 
+    public static String endMessage;
 
     private Camera ocam;
     
@@ -63,11 +64,11 @@ public class GameScreen implements Screen {
         //fish init
 
         fishCollection = new ArrayList<Sardines>();
-        for (int i = 0; i < 20; i++){
+        for (int i = 0; i < 6; i++){
             int x = (int) (Math.random() * fishOver.WIDTH);
             int y = (int) (Math.random() * fishOver.HEIGHT);
             Sardines tmp1 =  new Sardines(x+10,y+6,fishOver);
-            Sardines tmp2 =  new Sardines(x+5,y+4,fishOver);
+            Sardines tmp2 =  new Sardines(x,y+4,fishOver);
             Sardines tmp3 =  new Sardines(x+4,y+12,fishOver);
 
             fishCollection.add(tmp1);
@@ -80,12 +81,8 @@ public class GameScreen implements Screen {
             int x = (int) (Math.random() * fishOver.WIDTH);
             int y = (int) (Math.random() * fishOver.HEIGHT);
             Mackarel tmp1 =  new Mackarel(x+10,y+6,fishOver);
-            Mackarel tmp2 =  new Mackarel(x+5,y+4,fishOver);
-            Mackarel tmp3 =  new Mackarel(x+4,y+12,fishOver);
 
             fishmCollection.add(tmp1);
-            fishmCollection.add(tmp2);
-            fishmCollection.add(tmp3);
         }
 
     }
@@ -99,9 +96,10 @@ public class GameScreen implements Screen {
         sTimer+=Gdx.graphics.getDeltaTime();
         mTimer+=Gdx.graphics.getDeltaTime();
         if(fishCollection.size()<3||fishmCollection.size()<3){
-            hud.worldTimer =0;
+            endMessage = "YOU KILLED AN ENTIRE SPECIES";
+            fishOver.setScreen(new GameOverScreen(fishOver));
         }
-        if(sTimer>100/fishCollection.size() && fishCollection.size()<fishMax) {
+        if(sTimer>50/fishCollection.size() && fishCollection.size()<fishMax) {
             int x = (int) (Math.random() * Gdx.graphics.getWidth());
             int y = (int) (Math.random() * Gdx.graphics.getHeight());
             Sardines tmp1 = new Sardines(x + 10, y + 6, fishOver);
@@ -110,7 +108,7 @@ public class GameScreen implements Screen {
             fishCollection.add(tmp1);
             sTimer=0;
         }
-        if(mTimer>200/fishmCollection.size() && fishmCollection.size()<fishMax) {
+        if(mTimer>70/fishmCollection.size() && fishmCollection.size()<fishMax) {
             int x = (int) (Math.random() * Gdx.graphics.getWidth());
             int y = (int) (Math.random() * Gdx.graphics.getHeight());
             Mackarel tmp1 = new Mackarel(x + 10, y + 6, fishOver);
@@ -174,6 +172,7 @@ public class GameScreen implements Screen {
 
 
         if(gameOver(over)){
+            endMessage = "TIME IS UP, NO FOOD AND YOU DIED";
             fishOver.setScreen(new GameOverScreen(fishOver));
             dispose();
         }

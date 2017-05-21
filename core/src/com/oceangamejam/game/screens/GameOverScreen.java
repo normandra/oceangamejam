@@ -13,6 +13,7 @@ import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
@@ -28,12 +29,14 @@ public class GameOverScreen implements Screen{
     private Viewport viewport;
     private Stage stage;
     
-    private Game game;
+    private FishOver game;
     
     private BitmapFont font;
+    private SpriteBatch batch;
     
-    public GameOverScreen(Game game){
+    public GameOverScreen(FishOver game){
         this.game = game;
+        batch = new SpriteBatch();
         viewport = new FitViewport(Gdx.graphics.getWidth(),Gdx.graphics.getHeight(), new OrthographicCamera());
         stage = new Stage(viewport, ((FishOver)game).batch);
         
@@ -45,7 +48,7 @@ public class GameOverScreen implements Screen{
         table.center();
         table.setFillParent(true);
         
-        Label gameOverLabel = new Label("GAME OVER", fontx);
+        Label gameOverLabel = new Label("GAME OVER. "+ GameScreen.endMessage, fontx);
         Label playAgainLabel = new Label("Press Space to Play Again", fontx);
         
         
@@ -68,7 +71,13 @@ public class GameOverScreen implements Screen{
         }
         Gdx.gl.glClearColor(0, 0, 0, 1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
+        game.batch.begin();
+        game.batch.draw(game.as.endbg,0,0,game.WIDTH,game.HEIGHT);
+        game.batch.end();
+
         stage.draw();
+
+
     }
 
     @Override

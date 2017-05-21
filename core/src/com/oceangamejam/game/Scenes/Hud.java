@@ -50,7 +50,7 @@ public class Hud {
 
     Camera map;
     public Hud(SpriteBatch sb,Camera ocam){
-        worldTimer = 20;
+        worldTimer = 10;
         timeCount = 0;
         score = 0;
 
