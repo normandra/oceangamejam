@@ -57,7 +57,7 @@ public class AssetLoader {
             rippleFrames[index++] = tmp[0][i];
 
         }
-        ripples = new Animation<TextureRegion>(0.1f,rippleFrames);
+        ripples = new Animation<TextureRegion>(0.3f,rippleFrames);
 
         mackarelTexture = new Texture("fish/BigFishAnimation4Frames.png");
         tmp = TextureRegion.split(mackarelTexture,mackarelTexture.getWidth()/4,mackarelTexture.getHeight());

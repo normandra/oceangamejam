@@ -21,6 +21,8 @@ public class Ship extends Objects {
     private float time;
 	public Circle net;
 
+	private ArrayList<Ripples> ripples;
+
 	private void updateMotion(){
 		updateVelocity();
 		x += xVelocity;
@@ -138,6 +140,7 @@ public class Ship extends Objects {
         this.current = current;
         this.fishOver = fishOver;
         trail = new ShipTrail();
+		ripples = new ArrayList<Ripples>();
 		net = new Circle(x+2,y+2,4);
     }
 
@@ -150,10 +153,21 @@ public class Ship extends Objects {
 //        	if(time > 0.1f){
 //        		time = 0;
         		trail.addNewPoint(getX(), getY());
+				ripples.add(new Ripples(getX(),getY(),fishOver));
 //        	}
         }
-        
-        for (Integer[] i : trail.trail){
+
+		for (int i = 0; i < ripples.size(); i++) {
+			Ripples rp = ripples.get(i);
+
+			if (rp.stateTime > 1f){
+				ripples.remove(i);
+			}else{
+				rp.render();
+			}
+		}
+
+		for (Integer[] i : trail.trail){
         	fishOver.batch.draw(fishOver.as.trail,i[0],i[1]);
         }
 
