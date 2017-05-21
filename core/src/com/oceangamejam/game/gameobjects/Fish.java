@@ -1,5 +1,6 @@
 package com.oceangamejam.game.gameobjects;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.math.Circle;
 import com.oceangamejam.game.FishOver;
@@ -19,6 +20,7 @@ public class Fish extends Objects {
         super(x, y);
         this.fishOver = fo;
         this.fishBound = new Circle(x+20,y+10,30);
+        stateTime = 0f;
     }
 
     public TextureRegion getCurFrame() {
@@ -32,6 +34,8 @@ public class Fish extends Objects {
     @Override
     public void render() {
         fishBound.setPosition(x+20,y+10);
+        stateTime += Gdx.graphics.getDeltaTime();
+        fishOver.batch.draw(curFrame,getX(),getY());
     }
 
     public boolean checkCollision(Circle net){

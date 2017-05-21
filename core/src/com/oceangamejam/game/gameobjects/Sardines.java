@@ -14,15 +14,12 @@ public class Sardines extends Fish {
 
     public Sardines(int x, int y, FishOver fo) {
         super(x, y, fo);
-        stateTime = 0f;
     }
 
     @Override
     public void render() {
-        super.render();
-        stateTime += Gdx.graphics.getDeltaTime();
         curFrame = fishOver.as.sardines.getKeyFrame(stateTime,true);
-        fishOver.batch.draw(curFrame,getX(),getY());
+        super.render();
         moveAround();
     }
 

@@ -11,12 +11,9 @@ import com.badlogic.gdx.graphics.g2d.TextureRegion;
 
 public class AssetLoader {
 
-    public AssetManager assets;
-
 
     // Assets
 
-    public Texture img;
     public Texture left, duleft, up, duright,right,ddright,down,ddleft;
 
     public Texture playButtonActive,playButtonInactive,exitButtonActive,exitButtonInactive;
@@ -25,8 +22,13 @@ public class AssetLoader {
 
     public Texture trail, netLeftRight, netUpDown, netRightDownLeftUp, netRightUpLeftDown;
 
+    public Texture barrierDownR, barrierUp;
+
     private Texture sardineTexture;
     public Animation<TextureRegion> sardines;
+
+    private Texture mackarelTexture;
+    public Animation<TextureRegion> mackarel;
 
 
 
@@ -42,6 +44,19 @@ public class AssetLoader {
 
         }
         sardines = new Animation<TextureRegion>(0.3f,sardineFrames);
+
+        mackarelTexture = new Texture("fish/BigFishAnimation4Frames.png");
+        tmp = TextureRegion.split(mackarelTexture,mackarelTexture.getWidth()/4,mackarelTexture.getHeight());
+        TextureRegion[] mackarelFrames = new TextureRegion[4];
+        index = 0;
+        for (int i = 0; i < 4; i++) {
+            mackarelFrames[index++] = tmp[0][i];
+        }
+        mackarel = new Animation<TextureRegion>(0.3f,mackarelFrames);
+
+        //barrier
+        barrierDownR = new Texture("GrenzeDown.png");
+        barrierUp = new Texture("GrenzeUp.png");
 
         //boat textureRegion
         left = new Texture("BoatySprites/west.png");
@@ -92,6 +107,13 @@ public class AssetLoader {
         netUpDown.dispose();
         netRightDownLeftUp.dispose();
         netRightUpLeftDown.dispose();
+
+        barrierDownR.dispose();
+        barrierUp.dispose();
+
+        sardineTexture.dispose();
+        mackarelTexture.dispose();
+
         
         mainMenuBackground.dispose();
 

@@ -17,6 +17,11 @@ import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import com.oceangamejam.game.FishOver;
+import com.oceangamejam.game.gameobjects.Mackarel;
+import com.oceangamejam.game.gameobjects.Sardines;
+import com.oceangamejam.game.gameobjects.Ship;
+
+import java.util.ArrayList;
 
 /**
  *
@@ -38,11 +43,18 @@ public class Hud {
     Label levelLabel;
     Label worldLabel;
     Label fishLabel;
-    
+
+    ArrayList<Sardines> sardines;
+    ArrayList<Mackarel> mackarels;
+    Ship player;
+
+    Camera map;
     public Hud(SpriteBatch sb,Camera ocam){
         worldTimer = 20;
         timeCount = 0;
         score = 0;
+
+        map = new OrthographicCamera(Gdx.graphics.getWidth(),Gdx.graphics.getHeight());
         
         viewPort = new FitViewport(Gdx.graphics.getWidth(), Gdx.graphics.getHeight(), new OrthographicCamera());
         stage = new Stage(viewPort, sb);
@@ -68,14 +80,35 @@ public class Hud {
         
         stage.addActor(table);
     }   
-        public Integer update(float dt){
-        timeCount += dt;
-        if(timeCount >= 1 ){
-            worldTimer--;
-            countdownLabel.setText(String.format("%02d:%02d", worldTimer / 60, worldTimer % 60));
-            scoreLabel.setText(String.format("%03d", score));
-            timeCount = 0;
-        }
-        return worldTimer;
+        public Integer update(float dt, ArrayList<Sardines> sardines, ArrayList<Mackarel> mackarels, Ship player){
+            this.sardines = sardines;
+            this.mackarels = mackarels;
+            this.player = player;
+            timeCount += dt;
+            if(timeCount >= 1 ){
+                worldTimer--;
+                countdownLabel.setText(String.format("%02d:%02d", worldTimer / 60, worldTimer % 60));
+                scoreLabel.setText(String.format("%03d", score));
+                timeCount = 0;
+            }
+            return worldTimer;
     }
+
+        public void drawMap(FishOver fo){
+            fo.batch.begin();
+
+            
+            for (Sardines s : sardines) {
+                fo.batch.draw(fo.as.trail,s.getX(),s.getY());
+            }
+
+            for (Mackarel m : mackarels){
+                fo.batch.draw(fo.as.trail,m.getX(),m.getY());
+            }
+
+            fo.batch.draw(fo.as.trail,player.getX(),player.getY());
+
+
+            fo.batch.end();
+        }
 }
