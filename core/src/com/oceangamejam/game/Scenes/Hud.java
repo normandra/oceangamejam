@@ -97,7 +97,7 @@ public class Hud {
         public void drawMap(FishOver fo){
             fo.batch.begin();
 
-            
+
             for (Sardines s : sardines) {
                 fo.batch.draw(fo.as.trail,s.getX(),s.getY());
             }
