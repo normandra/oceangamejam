@@ -20,6 +20,7 @@ public class FishOver extends Game {
 		batch = new SpriteBatch();
 		as = new AssetLoader();
 
+
 		setScreen(new MainMenuScreen(this));
 	}
 

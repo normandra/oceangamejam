@@ -35,6 +35,8 @@ public class AssetLoader {
     private Texture mackarelTexture;
     public Animation<TextureRegion> mackarel;
 
+    public Texture sardineUi,mackarelUi;
+
 
 
     public AssetLoader(){
@@ -102,9 +104,15 @@ public class AssetLoader {
 
         mainMenuBackground = new Texture("menuUi/Map01.png");
 
+        //fish icon
+        sardineUi = new Texture("fish/FishIconSmal.png");
+        mackarelUi = new Texture("fish/FishIconMedium.png");
     }
 
     public void dispose() {
+        sardineUi.dispose();
+        mackarelUi.dispose();
+
         mapFish.dispose();
         mapPlayer.dispose();
 

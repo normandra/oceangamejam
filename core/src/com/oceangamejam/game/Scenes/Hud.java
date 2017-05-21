@@ -98,17 +98,21 @@ public class Hud {
         public void drawMap(FishOver fo){
             fo.batch.begin();
 
+            fo.batch.draw(fo.as.sardineUi,10,500,38*2,13*2);
+            font.draw(fo.batch, " "+ sardines.size(),130,540);
 
+            fo.batch.draw(fo.as.mackarelUi,10,420, 56 *2 , 28*2);
+            font.draw(fo.batch, " "+ mackarels.size(),130,450);
 
             for (Sardines s : sardines) {
-                fo.batch.draw(fo.as.mapFish,s.getX()/4,s.getY()/4);
+                fo.batch.draw(fo.as.mapFish,s.getX()/3.5f,s.getY()/4);
             }
 
             for (Mackarel m : mackarels){
-                fo.batch.draw(fo.as.mapFish,m.getX()/4,m.getY()/4);
+                fo.batch.draw(fo.as.mapFish,m.getX()/3.5f,m.getY()/4);
             }
 
-            fo.batch.draw(fo.as.mapPlayer,player.getX()/4,player.getY()/4);
+            fo.batch.draw(fo.as.mapPlayer,player.getX()/3.5f,player.getY()/4);
 
 
             fo.batch.end();
