@@ -100,8 +100,8 @@ public class GameScreen implements Screen {
             fishOver.setScreen(new GameOverScreen(fishOver));
         }
         if(sTimer>50/fishCollection.size() && fishCollection.size()<fishMax) {
-            int x = (int) (Math.random() * Gdx.graphics.getWidth());
-            int y = (int) (Math.random() * Gdx.graphics.getHeight());
+            int x = (int) (Math.random() * FishOver.WIDTH);
+            int y = (int) (Math.random() * FishOver.HEIGHT);
             Sardines tmp1 = new Sardines(x + 10, y + 6, fishOver);
 
 
@@ -109,8 +109,8 @@ public class GameScreen implements Screen {
             sTimer=0;
         }
         if(mTimer>70/fishmCollection.size() && fishmCollection.size()<fishMax) {
-            int x = (int) (Math.random() * Gdx.graphics.getWidth());
-            int y = (int) (Math.random() * Gdx.graphics.getHeight());
+            int x = (int) (Math.random() * FishOver.WIDTH);
+            int y = (int) (Math.random() * FishOver.HEIGHT);
             Mackarel tmp1 = new Mackarel(x + 10, y + 6, fishOver);
             fishmCollection.add(tmp1);
             mTimer=0;

@@ -20,6 +20,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import com.oceangamejam.game.FishOver;
+import com.sun.org.apache.xpath.internal.operations.Or;
 
 /**
  *
@@ -33,12 +34,15 @@ public class GameOverScreen implements Screen{
     
     private BitmapFont font;
     private SpriteBatch batch;
-    
+
+    private OrthographicCamera camera;
+
     public GameOverScreen(FishOver game){
+        camera = new OrthographicCamera();
         this.game = game;
         batch = new SpriteBatch();
-        viewport = new FitViewport(Gdx.graphics.getWidth(),Gdx.graphics.getHeight(), new OrthographicCamera());
-        stage = new Stage(viewport, ((FishOver)game).batch);
+        viewport = new FitViewport(Gdx.graphics.getWidth(),Gdx.graphics.getHeight(), camera);
+        stage = new Stage(viewport, (game).batch);
         
         font = new BitmapFont();
         font.getData().setScale(3,3);
@@ -66,13 +70,17 @@ public class GameOverScreen implements Screen{
     @Override
     public void render(float delta) {
         if(Gdx.input.isKeyPressed(Keys.SPACE)){
-            game.setScreen(new GameScreen((FishOver) game));
+            game.setScreen(new GameScreen(game));
             dispose();
         }
         Gdx.gl.glClearColor(0, 0, 0, 1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
+
+        camera.setToOrtho(false);
+        game.batch.setProjectionMatrix(camera.combined);
+
         game.batch.begin();
-        game.batch.draw(game.as.endbg,0,0,game.WIDTH,game.HEIGHT);
+        game.batch.draw(game.as.endbg,0,0,Gdx.graphics.getWidth(),Gdx.graphics.getHeight());
         game.batch.end();
 
         stage.draw();

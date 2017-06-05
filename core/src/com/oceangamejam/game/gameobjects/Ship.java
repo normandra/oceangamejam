@@ -29,13 +29,13 @@ public class Ship extends Objects {
 		y += yVelocity;
 		if (x<0) {
 			x = 0;
-		}else if (x>Gdx.graphics.getWidth()-20){
-			x = Gdx.graphics.getWidth()-20;
+		}else if (x>FishOver.WIDTH-20){
+			x = FishOver.WIDTH-20;
 		}
 		if (y<0) {
 			y = 0;
-		}else if (y>Gdx.graphics.getHeight()-30){
-			y = Gdx.graphics.getHeight()-30;
+		}else if (y>FishOver.HEIGHT-30){
+			y = FishOver.HEIGHT-30;
 		}
 		
 	}
