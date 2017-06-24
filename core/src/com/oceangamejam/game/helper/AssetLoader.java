@@ -39,9 +39,15 @@ public class AssetLoader {
 
     public Texture endbg;
 
+    private Texture waveTexture;
+    public Animation<TextureRegion> wave;
 
 
     public AssetLoader(){
+
+
+
+
 
         //fishT
         sardineTexture = new Texture("fish/TinyFishAnimation4Frames.png");
@@ -53,6 +59,17 @@ public class AssetLoader {
 
         }
         sardines = new Animation<TextureRegion>(0.3f,sardineFrames);
+
+        //wave
+        waveTexture = new Texture("wave.png");
+        tmp = TextureRegion.split(waveTexture, waveTexture.getWidth()/7,waveTexture.getHeight());
+        TextureRegion[] waveFrames = new TextureRegion[7];
+        index = 0;
+        for (int i = 0; i < 7; i++) {
+            waveFrames[index++] = tmp[0][i];
+
+        }
+        wave = new Animation<TextureRegion>(0.2f,waveFrames);
 
         //ripple
         rippleTexture = new Texture("WatterRippleNew.png"); // nice watter meme

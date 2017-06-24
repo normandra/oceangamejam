@@ -9,8 +9,10 @@ import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.oceangamejam.game.FishOver;
 import com.oceangamejam.game.Scenes.Hud;
 import com.oceangamejam.game.gameobjects.Mackarel;
+import com.oceangamejam.game.gameobjects.Ripples;
 import com.oceangamejam.game.gameobjects.Sardines;
 import com.oceangamejam.game.gameobjects.Ship;
+import com.oceangamejam.game.gameobjects.wave;
 import com.oceangamejam.game.helper.InputHandlerGame;
 
 import java.util.ArrayList;
@@ -32,6 +34,9 @@ public class GameScreen implements Screen {
     //fishes
     private ArrayList<Sardines> fishCollection;
     private ArrayList<Mackarel> fishmCollection;
+
+    //waves
+    private ArrayList<wave> waveCollection;
 
     public static String endMessage;
 
@@ -59,6 +64,10 @@ public class GameScreen implements Screen {
 
         //init the border
 
+
+
+        //init the waves
+        waveCollection = new ArrayList<wave>();
 
 
         //fish init
@@ -125,6 +134,20 @@ public class GameScreen implements Screen {
         //update hud
         over = hud.update(delta,fishCollection,fishmCollection,player);
 
+        //create random waves
+
+        if(waveCollection.size() < 15){
+
+            int x = (int) (Math.random() * fishOver.WIDTH);
+            int y = (int) (Math.random() * fishOver.HEIGHT);
+            wave tmp = new wave(x,y,fishOver);
+
+            waveCollection.add(tmp);
+
+        }
+
+
+
 
 
         Gdx.gl.glClearColor(10/255f, 152/255f, 172/255f, 1);
@@ -149,6 +172,15 @@ public class GameScreen implements Screen {
                 hud.score++;
                 hud.worldTimer++;
                 fishmCollection.remove(i);
+            }
+        }
+
+        for(int i = 0; i < waveCollection.size(); i++){
+            waveCollection.get(i).render();
+
+
+            if(waveCollection.get(i).stateTime > 1.4f){
+                waveCollection.remove(i);
             }
         }
 

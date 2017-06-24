@@ -39,6 +39,22 @@ public class InputHandlerGame implements InputProcessor {
             case Input.Keys.DOWN:
                 player.setDownMove(true);
                 break;
+
+            case Input.Keys.A:
+                player.setLeftMove(true);
+                break;
+
+            case Input.Keys.D:
+                player.setRightMove(true);
+                break;
+
+            case Input.Keys.W:
+                player.setUpMove(true);
+                break;
+
+            case Input.Keys.S:
+                player.setDownMove(true);
+                break;
         }
         return true;
     }
@@ -62,6 +78,23 @@ public class InputHandlerGame implements InputProcessor {
             case Input.Keys.DOWN:
                 player.setDownMove(false);
                 break;
+
+            case Input.Keys.A:
+                player.setLeftMove(false);
+                break;
+
+            case Input.Keys.D:
+                player.setRightMove(false);
+                break;
+
+            case Input.Keys.W:
+                player.setUpMove(false);
+                break;
+
+            case Input.Keys.S:
+                player.setDownMove(false);
+                break;
+
         }
         return true;
     }
