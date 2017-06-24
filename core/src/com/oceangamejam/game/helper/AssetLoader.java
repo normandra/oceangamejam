@@ -166,6 +166,9 @@ public class AssetLoader {
         sardineTexture.dispose();
         mackarelTexture.dispose();
 
+        waveTexture.dispose();
+
+
         mainMenuLogo.dispose();
         mainMenuBackground.dispose();
 
